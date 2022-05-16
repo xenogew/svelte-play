@@ -2,4 +2,6 @@
 	import '../app.css';
 </script>
 
-<slot />
+<div class="container mx-auto min-h-screen bg-gray-100 max-w-7xl py-6 sm:px-6 lg:px-8">
+	<slot />
+</div>
