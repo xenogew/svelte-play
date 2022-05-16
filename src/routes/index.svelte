@@ -50,7 +50,7 @@
 						</div>
 
 						<div>
-							<label class="block text-sm font-medium text-gray-700"> Photo </label>
+							<label class="block text-sm font-medium text-gray-700" for="photo-btn"> Photo </label>
 							<div class="mt-1 flex items-center">
 								<span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
 									<svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
@@ -60,6 +60,7 @@
 									</svg>
 								</span>
 								<button
+									id="photo-btn"
 									type="button"
 									class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 									>Change</button
@@ -68,12 +69,13 @@
 						</div>
 
 						<div>
-							<label class="block text-sm font-medium text-gray-700"> Cover photo </label>
+							<label class="block text-sm font-medium text-gray-700" for="cover-photo"> Cover photo </label>
 							<div
 								class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"
 							>
 								<div class="space-y-1 text-center">
 									<svg
+										id="cover-photo"
 										class="mx-auto h-12 w-12 text-gray-400"
 										stroke="currentColor"
 										fill="none"
