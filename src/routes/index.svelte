@@ -22,11 +22,11 @@
 	let generatedPassword = '';
 </script>
 
-<section class="max-w-4xl p-6 mx-auto bg-white sm:rounded-md shadow-md dark:bg-gray-900">
+<section class="max-w-4xl p-6 mx-auto bg-slate-100 sm:rounded-md shadow-md dark:bg-gray-900">
 	<Header />
 
 	<form>
-		<div class="grid grid-cols-1 gap-x-6 gap-y-3 sm:gap-6 mt-4 sm:grid-cols-4">
+		<div class="grid grid-cols-1 gap-x-6 gap-y-3 sm:gap-6 mt-4 sm:grid-cols-4 py-6">
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
 				<span class="text-gray-700 dark:text-gray-200">Password Length</span>
 			</div>
@@ -93,7 +93,7 @@
 
 		<div class="py-6">
 			<label class="text-gray-700 dark:text-gray-200" for="generated">Generated</label>
-			<div class="bg-white shadow-xl p-8 my-2 text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+			<div class="bg-slate-200 shadow-md rounded-md p-8 my-2 text-slate-500 dark:bg-slate-800 dark:text-slate-400">
 				<p class="break-all font-mono sm:text-lg text-sm max-h-fit overflow-hidden" id="generated">
 					{#if generatedPassword}
 						{generatedPassword}
