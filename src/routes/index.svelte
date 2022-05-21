@@ -3,6 +3,7 @@
 	import Footer from '../components/nav/footer.svelte';
 	import Checkboxes from '../components/form/checkboxes.svelte';
 	import ToggleSwitch from '../components/form/toggleSwitch.svelte';
+	import CopyToClipboard from '../lib/copyToClipboard.svelte';
 
 	// default initiate inputs
 	let lengthList: PasswordLength[] = [
@@ -20,6 +21,14 @@
 	let ambiguousToggle: ToggleOption = { id: 'ambiguous', name: 'ambiguous', checked: false };
 
 	let generatedPassword = '';
+
+	const handleSuccessfullyCopied = (e: any) => {
+		console.log(`successfully copied to clipboard! '${e.detail}'`);
+	};
+
+	const handleFailedCopy = () => {
+		console.log('failed to copy :(');
+	};
 </script>
 
 <section class="max-w-4xl p-6 mx-auto bg-slate-100 sm:rounded-md shadow-md dark:bg-gray-900">
@@ -93,7 +102,9 @@
 
 		<div class="py-6">
 			<label class="text-gray-700 dark:text-gray-200" for="generated">Generated</label>
-			<div class="bg-slate-200 shadow-md rounded-md p-8 my-2 text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+			<div
+				class="bg-slate-200 shadow-md rounded-md p-8 my-2 text-slate-500 dark:bg-slate-800 dark:text-slate-400"
+			>
 				<p class="break-all font-mono sm:text-lg text-sm max-h-fit overflow-hidden" id="generated">
 					{#if generatedPassword}
 						{generatedPassword}
@@ -102,6 +113,18 @@
 					{/if}
 				</p>
 			</div>
+
+			<CopyToClipboard
+				text={generatedPassword}
+				on:copy={handleSuccessfullyCopied}
+				on:fail={handleFailedCopy}
+				let:copy
+			>
+				<button
+					class="px-6 py-2 leading-5 w-full text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+					on:click|preventDefault={copy}>Copy it to Clipboard</button
+				>
+			</CopyToClipboard>
 		</div>
 	</form>
 
