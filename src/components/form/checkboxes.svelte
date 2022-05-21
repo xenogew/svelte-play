@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let items: any;
+	export let items: PasswordLength[];
 	export let name: string;
 </script>
 

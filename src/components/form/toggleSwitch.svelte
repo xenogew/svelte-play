@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let toggleSwitch: any;
+	export let toggleSwitch: ToggleOption;
 </script>
 
 <div
