@@ -24,6 +24,7 @@ jobs:
             - << parameters.key >>
       - run: npm install -g npm@latest
       - run: npm install
+      - run: ls -ls node_modules
       - run: npx playwright install
       - save_cache:
           paths:
@@ -39,7 +40,6 @@ jobs:
       - restore_cache:
            keys:
              - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
-      - run: ls -ls ~/project/node_modules
       - run: npm run test
 
 # Invoke jobs via workflows
