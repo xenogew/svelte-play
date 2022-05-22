@@ -40,7 +40,7 @@ jobs:
       - restore_cache:
            keys:
              - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
-      - run: ls -ls node_modules
+      - run: ls -ls
       # - run: npm run test
 
 # Invoke jobs via workflows
