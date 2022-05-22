@@ -13,7 +13,7 @@ jobs:
         type: string
     machine:
       image: mcr.microsoft.com/playwright:v1.22.0-focal
-      docker_layer_caching: true
+      # docker_layer_caching: true <- This Feature is available for paid plan
     steps:
       - checkout
       - restore_cache:
