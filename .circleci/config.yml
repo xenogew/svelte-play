@@ -52,4 +52,6 @@ workflows:
       #     pkg-manager: npm
       - cache-deps:
           key: npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
-      - test-w-playwright
+      - test-w-playwright:
+          requires:
+            - "cache-deps"
