@@ -7,14 +7,31 @@ orbs:
   node: circleci/node@5.0.2
 
 jobs:
-  test-w-playwright:
-    executor: node/default
+  cache-deps:
+    parameters:
+      key:
+        type: string
+    executor: ci-node
     steps:
-      - checkout
-      - node/install-packages:
-          cache-path: ~/project/node_modules
-          override-ci-command: npm install
+      - git-shallow-clone/checkout
+      - restore_cache:
+          keys:
+            - << parameters.key >>
       - run: npm install -g npm@latest
+      - run: npm install
+      - save_cache:
+          paths:
+            - "~/project/node_modules"
+            - "/usr/local/lib/node_modules"
+            - "/home/circleci/.cache/ms-playwright"
+          key: << parameters.key >>
+  test-w-playwright:
+    executor: ci-node
+    steps:
+      - git-shallow-clone/checkout
+      - restore_cache:
+           keys:
+             - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
       - run: npx playwright install-deps
       - run: npx playwright install
       - run: npm run test
@@ -32,4 +49,6 @@ workflows:
       #     version: '16.10'
       #     # If you are using yarn, change the line below from "npm" to "yarn"
       #     pkg-manager: npm
+      - cache-deps:
+          key: npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
       - test-w-playwright
