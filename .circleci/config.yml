@@ -41,6 +41,7 @@ jobs:
       - restore_cache:
            keys:
              - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}-x
+      - run: ls -ls
       - run: npm install
       - run: ls -ls
       - run: npm run test
