@@ -40,10 +40,8 @@ jobs:
       - checkout
       - restore_cache:
            keys:
-             - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}-x
-      - run: ls -ls
+             - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
       - run: npm install
-      - run: ls -ls
       - run: npm run test
 
 # Invoke jobs via workflows
@@ -60,7 +58,7 @@ workflows:
       #     # If you are using yarn, change the line below from "npm" to "yarn"
       #     pkg-manager: npm
       - cache-deps:
-          key: npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }-x
+          key: npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }
       - test-w-playwright:
           requires:
             - "cache-deps"
