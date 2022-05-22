@@ -1,8 +1,9 @@
-FROM node:18 as builder
+FROM node:18-alpine as builder
 LABEL org.opencontainers.image.authors="Natta Wang <xenogew@gmail.com>"
 
 WORKDIR /app
 
+RUN apk --no-cache add curl
 RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@7
 RUN pnpm config set store-dir .pnpm-store
 
