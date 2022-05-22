@@ -7,7 +7,7 @@ orbs:
   node: circleci/node@5.0.2
 
 jobs:
-  test:
+  test-w-playwright:
     executor: node/default
     steps:
       - checkout
@@ -32,4 +32,4 @@ workflows:
       #     version: '16.10'
       #     # If you are using yarn, change the line below from "npm" to "yarn"
       #     pkg-manager: npm
-      - test
+      - test-w-playwright
