@@ -28,6 +28,7 @@ jobs:
       - run: npx playwright install
       - save_cache:
           paths:
+            - "node_modules"
             - "~/project/node_modules"
             - "/usr/local/lib/node_modules"
             - "/home/circleci/.cache/ms-playwright"
@@ -39,9 +40,9 @@ jobs:
       - checkout
       - restore_cache:
            keys:
-             - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
-      - run: ls -ls ~/project/node_modules
+             - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}-x
       - run: npm install
+      - run: ls -ls
       - run: npm run test
 
 # Invoke jobs via workflows
@@ -58,7 +59,7 @@ workflows:
       #     # If you are using yarn, change the line below from "npm" to "yarn"
       #     pkg-manager: npm
       - cache-deps:
-          key: npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
+          key: npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }-x
       - test-w-playwright:
           requires:
             - "cache-deps"
