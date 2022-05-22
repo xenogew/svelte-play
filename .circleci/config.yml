@@ -6,12 +6,17 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.2
 
+executors:
+  ci-node:
+    docker:
+      - image: mcr.microsoft.com/playwright:v1.22.0-focal
+
 jobs:
   cache-deps:
     parameters:
       key:
         type: string
-    executor: node/default
+    executor: ci-node
     steps:
       - checkout
       - restore_cache:
@@ -23,18 +28,15 @@ jobs:
           paths:
             - "~/project/node_modules"
             - "/usr/local/lib/node_modules"
-            - "/home/circleci/.cache/ms-playwright"
           key: << parameters.key >>
 
   test-w-playwright:
-    executor: node/default
+    executor: ci-node
     steps:
       - checkout
       - restore_cache:
            keys:
              - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
-      - run: npx playwright install-deps
-      - run: npx playwright install
       - run: npm run test
 
 # Invoke jobs via workflows
