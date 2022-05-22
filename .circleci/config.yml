@@ -49,7 +49,7 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - cache-deps:
-          key: npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }
+          key: npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
       - test-w-playwright:
           requires:
             - "cache-deps"
