@@ -13,8 +13,8 @@ jobs:
         type: string
     executor: ci-node
     # machine:
-      # image: mcr.microsoft.com/playwright:v1.22.0-focal
-      # docker_layer_caching: true <- This Feature is available for paid plan
+    # image: mcr.microsoft.com/playwright:v1.22.0-focal
+    # docker_layer_caching: true <- This Feature is available for paid plan
     steps:
       - checkout
       - restore_cache:
@@ -24,9 +24,9 @@ jobs:
       - run: npm install
       - save_cache:
           paths:
-            - "node_modules"
-            - "~/project/node_modules"
-            - "/usr/local/lib/node_modules"
+            - 'node_modules'
+            - '~/project/node_modules'
+            - '/usr/local/lib/node_modules'
           key: << parameters.key >>
 
   test-w-playwright:
@@ -34,10 +34,20 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-           keys:
-             - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
+          keys:
+            - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
       - run: npm install
       - run: npm run test
+
+  build:
+    working_directory: /app
+    docker:
+      - image: docker:20-git
+    steps:
+      - checkout
+      - setup_remote_docker
+        # docker_layer_caching: false;
+      - run: ls -ls
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -49,4 +59,4 @@ workflows:
           key: npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
       - test-w-playwright:
           requires:
-            - "cache-deps"
+            - 'cache-deps'
