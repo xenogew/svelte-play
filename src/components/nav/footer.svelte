@@ -41,6 +41,6 @@
 				/>
 			</svg>
 		</a>
-		<BuyMeCoffee />
+		<BuyMeCoffee bmcId="xenogew" bmcText="Buy me a coffee" />
 	</div>
 </div>
