@@ -1,6 +1,11 @@
 # This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
 version: 2.1
 
+# Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
+# See: https://circleci.com/docs/2.0/orb-intro/
+orbs:
+  node: circleci/node@5.0.2
+
 jobs:
   cache-deps:
     parameters:
@@ -8,7 +13,7 @@ jobs:
         type: string
     machine:
       image: mcr.microsoft.com/playwright:v1.22.0-focal
-      # docker_layer_caching: true <- This Feature is available for paid plan
+      docker_layer_caching: true
     steps:
       - checkout
       - restore_cache:
