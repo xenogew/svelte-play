@@ -15,6 +15,7 @@ jobs:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
       - run: npm install -g npm@latest
+      - run: npx playwright install-deps
       - run: npx playwright install
       - run: npm run test
 
