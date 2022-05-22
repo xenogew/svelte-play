@@ -13,7 +13,7 @@ jobs:
         type: string
     executor: ci-node
     steps:
-      - git-shallow-clone/checkout
+      - checkout
       - restore_cache:
           keys:
             - << parameters.key >>
@@ -28,7 +28,7 @@ jobs:
   test-w-playwright:
     executor: ci-node
     steps:
-      - git-shallow-clone/checkout
+      - checkout
       - restore_cache:
            keys:
              - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
