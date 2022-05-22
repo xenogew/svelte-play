@@ -1,3 +1,7 @@
+<script lang="ts">
+	import BuyMeCoffee from '../../components/special/BuyMeCoffee.svelte';
+</script>
+
 <div class="w-full -mx-6">
 	<div class="px-6">
 		<div>
@@ -19,7 +23,7 @@
 <div class="sm:flex sm:items-center sm:justify-between mt-6">
 	<p class="text-sm text-gray-400">© Copyright 2021. All Rights Reserved.</p>
 
-	<div class="flex mt-3 -mx-2 sm:mt-0">
+	<div class="flex mt-3 -mx-2 sm:mt-0 items-center">
 		<a
 			href="https://github.com/xenogew/svelte-play"
 			class="mx-2 text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
@@ -37,5 +41,6 @@
 				/>
 			</svg>
 		</a>
+		<BuyMeCoffee />
 	</div>
 </div>
