@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:18 as builder
 LABEL org.opencontainers.image.authors="Natta Wang <xenogew@gmail.com>"
 
 WORKDIR /app
@@ -18,7 +18,7 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY --from=0 /app/target .
+COPY --from=builder /app/target .
 COPY package.json ./
 
 EXPOSE 3000
