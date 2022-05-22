@@ -45,7 +45,7 @@
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<span class="text-gray-700 dark:text-gray-200">Include Symbols</span>
+				<label class="text-gray-700 dark:text-gray-200" for="{symbolToggle.id}" on:click|preventDefault>Include Symbols</label>
 			</div>
 
 			<div class="col-span-3">
@@ -53,7 +53,7 @@
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<span class="text-gray-700 dark:text-gray-200">Include Numbers</span>
+				<label class="text-gray-700 dark:text-gray-200" for="{numberToggle.id}" on:click|preventDefault>Include Numbers</label>
 			</div>
 
 			<div class="col-span-3">
@@ -61,7 +61,7 @@
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<span class="text-gray-700 dark:text-gray-200">Include Lowercases</span>
+				<label class="text-gray-700 dark:text-gray-200" for="{lowerToggle.id}" on:click|preventDefault>Include Lowercases</label>
 			</div>
 
 			<div class="col-span-3">
@@ -69,7 +69,7 @@
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<span class="text-gray-700 dark:text-gray-200">Include Uppercases</span>
+				<label class="text-gray-700 dark:text-gray-200" for="{upperToggle.id}" on:click|preventDefault>Include Uppercases</label>
 			</div>
 
 			<div class="col-span-3">
@@ -77,7 +77,7 @@
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<span class="text-gray-700 dark:text-gray-200">Exclude Similar</span>
+				<label class="text-gray-700 dark:text-gray-200" for="{similarToggle.id}" on:click|preventDefault>Exclude Similar</label>
 			</div>
 
 			<div class="col-span-3">
@@ -85,7 +85,7 @@
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<span class="text-gray-700 dark:text-gray-200">Exclude Ambiguous</span>
+				<label class="text-gray-700 dark:text-gray-200" for="{ambiguousToggle.id}" on:click|preventDefault>Exclude Ambiguous</label>
 			</div>
 
 			<div class="col-span-3">

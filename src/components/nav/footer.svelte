@@ -21,12 +21,12 @@
 </div>
 
 <div class="sm:flex sm:items-center sm:justify-between mt-6">
-	<p class="text-sm text-gray-400">© Copyright 2021. All Rights Reserved.</p>
+	<p class="text-xs text-gray-600 dark:text-gray-300">© Copyright 2021. All Rights Reserved.</p>
 
 	<div class="flex mt-3 -mx-2 sm:mt-0 items-center">
 		<a
 			href="https://github.com/xenogew/svelte-play"
-			class="mx-2 text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
+			class="mx-2 text-gray-600 hover:text-gray-700 dark:hover:text-gray-300"
 			aria-label="Github - View Source"
 			target="_blank"
 		>
