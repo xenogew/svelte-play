@@ -45,7 +45,11 @@
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<label class="text-gray-700 dark:text-gray-200" for="{symbolToggle.id}" on:click|preventDefault>Include Symbols</label>
+				<label
+					class="text-gray-700 dark:text-gray-200"
+					for={symbolToggle.id}
+					on:click|preventDefault>Include Symbols</label
+				>
 			</div>
 
 			<div class="col-span-3">
@@ -53,7 +57,11 @@
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<label class="text-gray-700 dark:text-gray-200" for="{numberToggle.id}" on:click|preventDefault>Include Numbers</label>
+				<label
+					class="text-gray-700 dark:text-gray-200"
+					for={numberToggle.id}
+					on:click|preventDefault>Include Numbers</label
+				>
 			</div>
 
 			<div class="col-span-3">
@@ -61,7 +69,9 @@
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<label class="text-gray-700 dark:text-gray-200" for="{lowerToggle.id}" on:click|preventDefault>Include Lowercases</label>
+				<label class="text-gray-700 dark:text-gray-200" for={lowerToggle.id} on:click|preventDefault
+					>Include Lowercases</label
+				>
 			</div>
 
 			<div class="col-span-3">
@@ -69,7 +79,9 @@
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<label class="text-gray-700 dark:text-gray-200" for="{upperToggle.id}" on:click|preventDefault>Include Uppercases</label>
+				<label class="text-gray-700 dark:text-gray-200" for={upperToggle.id} on:click|preventDefault
+					>Include Uppercases</label
+				>
 			</div>
 
 			<div class="col-span-3">
@@ -77,7 +89,11 @@
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<label class="text-gray-700 dark:text-gray-200" for="{similarToggle.id}" on:click|preventDefault>Exclude Similar</label>
+				<label
+					class="text-gray-700 dark:text-gray-200"
+					for={similarToggle.id}
+					on:click|preventDefault>Exclude Similar</label
+				>
 			</div>
 
 			<div class="col-span-3">
@@ -85,7 +101,11 @@
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<label class="text-gray-700 dark:text-gray-200" for="{ambiguousToggle.id}" on:click|preventDefault>Exclude Ambiguous</label>
+				<label
+					class="text-gray-700 dark:text-gray-200"
+					for={ambiguousToggle.id}
+					on:click|preventDefault>Exclude Ambiguous</label
+				>
 			</div>
 
 			<div class="col-span-3">
