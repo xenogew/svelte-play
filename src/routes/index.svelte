@@ -141,7 +141,7 @@
 				let:copy
 			>
 				<button
-					class="px-6 py-2 shadow-md w-full text-white transition-colors duration-200 transform bg-gray-700 rounded-b-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+					class="px-6 py-2 shadow-md w-full text-white transition-colors duration-200 transform bg-gray-700 rounded-b-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 active:bg-gray-700 dark:active:bg-gray-500"
 					on:click|preventDefault={copy}>Copy it</button
 				>
 			</CopyToClipboard>
