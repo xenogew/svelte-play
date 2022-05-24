@@ -115,7 +115,7 @@
 
 		<div class="flex justify-center mt-6">
 			<button
-				class="px-6 py-2 leading-5 w-full text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+				class="px-6 py-2 leading-5 w-full text-white text-lg font-medium transition-colors duration-200 ease-in-out transform bg-blue-700 hover:bg-blue-800 focus:bg-blue-800 shadow-md hover:shadow-lg rounded-md focus:outline-none"
 				>Generate</button
 			>
 		</div>
@@ -123,7 +123,7 @@
 		<div class="py-6">
 			<label class="text-gray-700 dark:text-gray-200" for="generated">Generated</label>
 			<div
-				class="bg-slate-200 shadow-md rounded-md p-8 my-2 text-slate-500 dark:bg-slate-800 dark:text-slate-400"
+				class="bg-slate-500 dark:bg-slate-800 text-slate-200 dark:text-slate-400 shadow-md rounded-t-md p-8 mt-2"
 			>
 				<p class="break-all font-mono sm:text-lg text-sm max-h-fit overflow-hidden" id="generated">
 					{#if generatedPassword}
@@ -141,8 +141,8 @@
 				let:copy
 			>
 				<button
-					class="px-6 py-2 leading-5 w-full text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
-					on:click|preventDefault={copy}>Copy it to Clipboard</button
+					class="px-6 py-2 shadow-md w-full text-white transition-colors duration-200 transform bg-gray-700 rounded-b-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+					on:click|preventDefault={copy}>Copy it</button
 				>
 			</CopyToClipboard>
 		</div>
