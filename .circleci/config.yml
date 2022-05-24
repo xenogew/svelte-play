@@ -21,8 +21,7 @@ jobs:
           keys:
             - << parameters.key >>
       - run: npm install -g npm@latest
-      - run: npm install -g pnpm
-      - run: pnpm install
+      - run: npm install
       - save_cache:
           paths:
             - 'node_modules'
@@ -36,10 +35,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - pnpm-svelte-{{ arch }}-{{ checksum "pnpm-lock.yaml" }}
-      - run: npm install -g pnpm
-      - run: pnpm install
-      - run: pnpm run test
+            - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - run: npm run test
 
   build:
     working_directory: /app
@@ -58,7 +56,7 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - cache-deps:
-          key: pnpm-svelte-{{ arch }}-{{ checksum "pnpm-lock.yaml" }}
+          key: npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
       - test-w-playwright:
           requires:
             - 'cache-deps'
