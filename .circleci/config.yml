@@ -37,6 +37,7 @@ jobs:
       - restore_cache:
           keys:
             - pnpm-svelte-{{ arch }}-{{ checksum "pnpm-lock.yaml" }}
+      - run: npm install -g pnpm
       - run: pnpm install
       - run: pnpm run test
 
