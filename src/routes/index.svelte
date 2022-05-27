@@ -24,15 +24,15 @@
 	let generatedPassword = '';
 	let toasting = false;
 
-	const handleSuccessfullyCopied = (e: any) => {
+	const handleSuccessfullyCopied = async (e: CustomEvent) => {
 		console.log(`successfully copied to clipboard! '${e.detail}'`);
 	};
 
-	const handleFailedCopy = () => {
+	const handleFailedCopy = async () => {
 		console.log('failed to copy :(');
 	};
 
-	const sleep = (m: number) => new Promise((r) => setTimeout(r, m));
+	const sleep = (m: number) => new Promise((r: Function) => setTimeout(r, m));
 </script>
 
 <section
