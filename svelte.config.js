@@ -10,7 +10,7 @@ const config = {
 	kit: {
 		adapter: adapter({
 			edge: false,
-			external: [],
+			external: ['@sveltejs/kit/node/polyfills'],
 			split: false
 		})
 	}
