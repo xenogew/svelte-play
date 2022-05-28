@@ -13,7 +13,9 @@
 								class="object-scale-down sm:h-fit sm:w-fit h-8 w-8"
 							/>
 						</div>
-						<span class="text-2xl font-bold text-slate-800 dark:text-slate-200 lg:text-3xl"
+						<span
+							id="app-title"
+							class="text-2xl font-bold text-slate-800 dark:text-slate-200 lg:text-3xl"
 							>Password Generator</span
 						>
 					</div>

@@ -51,7 +51,7 @@
 	<form>
 		<div class="grid grid-cols-1 gap-x-6 gap-y-3 sm:gap-6 mt-4 sm:grid-cols-4 py-6">
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<span class="text-gray-700 dark:text-gray-200">Password Length</span>
+				<span id="pw-length" class="text-gray-700 dark:text-gray-200">Password Length</span>
 			</div>
 
 			<div class="col-span-3">
