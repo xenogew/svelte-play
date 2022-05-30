@@ -14,12 +14,25 @@
 		{ id: 'len_64', len: 64 },
 		{ id: 'len_128', len: 128 }
 	];
-	let symbolToggle: ToggleOption = { id: 'symbols', name: 'symbols', checked: true };
-	let numberToggle: ToggleOption = { id: 'numbers', name: 'numbers', checked: true };
-	let lowerToggle: ToggleOption = { id: 'lowers', name: 'lowers', checked: true };
-	let upperToggle: ToggleOption = { id: 'uppers', name: 'uppers', checked: true };
-	let similarToggle: ToggleOption = { id: 'similar', name: 'similar', checked: false };
-	let ambiguousToggle: ToggleOption = { id: 'ambiguous', name: 'ambiguous', checked: false };
+
+	// make input binding reactive
+	let pwdLength: number;
+	$: symbolToggle = { id: 'symbols', name: 'symbols', checked: true, message: '( e.g. @#$%+& )' };
+	$: numberToggle = { id: 'numbers', name: 'numbers', checked: true, message: '( e.g. 12345 )' };
+	$: lowerToggle = { id: 'lowers', name: 'lowers', checked: true, message: '( e.g. abcdefghij )' };
+	$: upperToggle = { id: 'uppers', name: 'uppers', checked: true, message: '( e.g. ABCDEFGHIJ )' };
+	$: similarToggle = {
+		id: 'similar',
+		name: 'similar',
+		checked: false,
+		message: '( e.g. i, l, 1, L, o, 0, O )'
+	};
+	$: ambiguousToggle = {
+		id: 'ambiguous',
+		name: 'ambiguous',
+		checked: false,
+		message: '( e.g. { } [ ] ( ) < > / \\ \' " ` ~ , ; : . )'
+	};
 
 	let generatedPassword = '';
 	let toasting = false;
@@ -27,9 +40,22 @@
 	const sleep = (m: number) => new Promise((r: Function) => setTimeout(r, m));
 
 	const fetchRandomPassword = async () => {
-		const response = await fetch('/api/random/password');
+		const request: GeneratePasswordRequest = {
+			pwdLength: pwdLength,
+			symbol: symbolToggle.checked,
+			number: numberToggle.checked,
+			lower: lowerToggle.checked,
+			upper: upperToggle.checked,
+			similar: similarToggle.checked,
+			ambiguous: ambiguousToggle.checked
+		};
+		const response = await fetch('/api/random/password', {
+			method: 'POST',
+			body: JSON.stringify(request)
+		});
 		const jsonBody = await response.json();
-		generatedPassword = jsonBody.pw;
+		// generatedPassword = jsonBody.pw;
+		console.log(`response: `, jsonBody);
 	};
 </script>
 
@@ -47,7 +73,7 @@
 			</div>
 
 			<div class="col-span-3">
-				<Checkboxes name="pwdLength" items={lengthList} />
+				<Checkboxes name="pwdLength" items={lengthList} bind:value={pwdLength} />
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
@@ -58,7 +84,7 @@
 				>
 			</div>
 
-			<div class="col-span-3">
+			<div class="col-span-3 flex flex-row">
 				<ToggleSwitch toggleSwitch={symbolToggle} />
 			</div>
 
@@ -70,7 +96,7 @@
 				>
 			</div>
 
-			<div class="col-span-3">
+			<div class="col-span-3 flex flex-row">
 				<ToggleSwitch toggleSwitch={numberToggle} />
 			</div>
 
@@ -80,7 +106,7 @@
 				>
 			</div>
 
-			<div class="col-span-3">
+			<div class="col-span-3 flex flex-row">
 				<ToggleSwitch toggleSwitch={lowerToggle} />
 			</div>
 
@@ -90,7 +116,7 @@
 				>
 			</div>
 
-			<div class="col-span-3">
+			<div class="col-span-3 flex flex-row">
 				<ToggleSwitch toggleSwitch={upperToggle} />
 			</div>
 
@@ -102,7 +128,7 @@
 				>
 			</div>
 
-			<div class="col-span-3">
+			<div class="col-span-3 flex flex-row">
 				<ToggleSwitch toggleSwitch={similarToggle} />
 			</div>
 
@@ -114,7 +140,7 @@
 				>
 			</div>
 
-			<div class="col-span-3">
+			<div class="col-span-3 flex flex-row">
 				<ToggleSwitch toggleSwitch={ambiguousToggle} />
 			</div>
 		</div>

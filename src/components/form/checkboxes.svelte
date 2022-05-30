@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let items: PasswordLength[];
 	export let name: string;
+	export let value: number = 16;
 </script>
 
 <ul class="grid grid-flow-col auto-cols-min gap-x-2 max-w-md">
@@ -12,7 +13,7 @@
 				value={item.len}
 				{name}
 				id={item.id}
-				checked={item.checked}
+				bind:group={value}
 			/>
 			<label
 				class="flex items-center justify-center w-9 h-9 antialiased text-lg text-blue-600 peer-checked:text-blue-700 peer-checked:font-bold bg-gray-200 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-slate-700 hover:shadow-md border-2 border-blue-600 hover:ring-slate-200 dark:hover:ring-slate-700 peer-checked:ring-blue-700 peer-checked:ring-2 peer-checked:border-transparent peer-checked:bg-slate-200 dark:peer-checked:bg-slate-800 rounded-md cursor-pointer focus:outline-none focus:ring-0 font-medium leading-tight"

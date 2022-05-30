@@ -2,9 +2,7 @@
 	export let toggleSwitch: ToggleOption;
 </script>
 
-<div
-	class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in"
->
+<div class="relative w-10 mr-2 align-middle select-none transition duration-200 ease-in">
 	<input
 		type="checkbox"
 		name={toggleSwitch.name}
@@ -17,6 +15,12 @@
 		class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"
 	/>
 </div>
+{#if toggleSwitch.message}
+	<span
+		class="text-xs text-gray-400 dark:text-gray-400 my-auto px-2"
+		class:line-through={!toggleSwitch.checked}>{toggleSwitch.message}</span
+	>
+{/if}
 
 <style>
 	.toggle-checkbox:checked {
