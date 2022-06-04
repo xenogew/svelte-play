@@ -41,7 +41,7 @@
 
 	const fetchRandomPassword = async () => {
 		const request: GeneratePasswordRequest = {
-			pwdLength: pwdLength,
+			pwd_length: pwdLength,
 			symbol: symbolToggle.checked,
 			number: numberToggle.checked,
 			lower: lowerToggle.checked,
@@ -51,11 +51,13 @@
 		};
 		const response = await fetch('/api/random/password', {
 			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
 			body: JSON.stringify(request)
 		});
 		const jsonBody = await response.json();
-		// generatedPassword = jsonBody.pw;
-		console.log(`response: `, jsonBody);
+		generatedPassword = jsonBody.pw;
 	};
 </script>
 

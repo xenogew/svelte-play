@@ -12,11 +12,15 @@ type ToggleOption = {
 };
 
 type GeneratePasswordRequest = {
-	pwdLength: number;
+	pwd_length: number;
 	symbol: boolean;
 	number: boolean;
 	lower: boolean;
 	upper: boolean;
 	similar: boolean;
 	ambiguous: boolean;
+};
+
+type GeneratePasswordResponse = {
+	pw: string;
 };
