@@ -17,8 +17,7 @@ type GeneratePasswordRequest = {
 	number: boolean;
 	lower: boolean;
 	upper: boolean;
-	similar: boolean;
-	ambiguous: boolean;
+	x_similar: boolean;
 };
 
 type GeneratePasswordResponse = {

@@ -27,12 +27,6 @@
 		checked: false,
 		message: '( e.g. i, l, 1, L, o, 0, O )'
 	};
-	$: ambiguousToggle = {
-		id: 'ambiguous',
-		name: 'ambiguous',
-		checked: false,
-		message: '( e.g. { } [ ] ( ) < > / \\ \' " ` ~ , ; : . )'
-	};
 
 	let generatedPassword = '';
 	let toasting = false;
@@ -40,14 +34,14 @@
 	const sleep = (m: number) => new Promise((r: Function) => setTimeout(r, m));
 
 	const fetchRandomPassword = async () => {
+		console.log('fetching data from API server...');
 		const request: GeneratePasswordRequest = {
 			pwd_length: pwdLength,
 			symbol: symbolToggle.checked,
 			number: numberToggle.checked,
 			lower: lowerToggle.checked,
 			upper: upperToggle.checked,
-			similar: similarToggle.checked,
-			ambiguous: ambiguousToggle.checked
+			x_similar: similarToggle.checked
 		};
 		const response = await fetch('/api/random/password', {
 			method: 'POST',
@@ -56,6 +50,7 @@
 			},
 			body: JSON.stringify(request)
 		});
+		console.log('response retrieve');
 		const jsonBody = await response.json();
 		generatedPassword = jsonBody.pw;
 	};
@@ -133,18 +128,6 @@
 			<div class="col-span-3 flex flex-row">
 				<ToggleSwitch toggleSwitch={similarToggle} />
 			</div>
-
-			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<label
-					class="text-gray-700 dark:text-gray-200"
-					for={ambiguousToggle.id}
-					on:click|preventDefault>Exclude Ambiguous</label
-				>
-			</div>
-
-			<div class="col-span-3 flex flex-row">
-				<ToggleSwitch toggleSwitch={ambiguousToggle} />
-			</div>
 		</div>
 
 		<div class="flex justify-center mt-6">
@@ -170,7 +153,7 @@
 
 			<CopyToClipboard
 				text={generatedPassword}
-				on:copy={async () => console.log(`successfully copied to clipboard! 😎`)}
+				on:copy={async () => console.log(`copied to clipboard! 😎`)}
 				on:fail={async () => console.log('failed to copy 😣')}
 				let:copy
 			>
