@@ -6,6 +6,7 @@
 	<div class="px-6">
 		<div>
 			<h3
+				id="credit-label"
 				class="text-sm font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 sm:text-md"
 			>
 				Credit
@@ -13,17 +14,38 @@
 		</div>
 
 		<a
+			id="credit-icon-01"
 			class="max-w-md mt-2 text-gray-500 text-xs sm:text-base dark:text-gray-400"
 			href="https://www.flaticon.com/free-icons/password"
-			title="password icons">Password icons created by Freepik - Flaticon</a
+			title="password icons"
+			target="_blank">Password icons created by Freepik - Flaticon</a
+		>
+	</div>
+	<div class="px-6">
+		<div>
+			<h3
+				id="navigate-label"
+				class="text-sm font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 sm:text-md"
+			>
+				Navigate
+			</h3>
+		</div>
+
+		<a
+			id="about"
+			class="max-w-md mt-2 text-gray-500 text-xs sm:text-base dark:text-gray-400"
+			href="/about"
+			title="">About</a
 		>
 	</div>
 </div>
 
 <div class="sm:flex sm:items-center sm:justify-between mt-6">
-	<p class="text-xs text-gray-600 dark:text-gray-300">© Copyright 2021. All Rights Reserved.</p>
+	<p id="copyright" class="text-xs text-gray-600 dark:text-gray-300">
+		© Copyright 2021. All Rights Reserved.
+	</p>
 
-	<div class="flex mt-3 -mx-2 sm:mt-0 items-center">
+	<div id="owner-section" class="flex mt-3 -mx-2 sm:mt-0 items-center">
 		<a
 			href="https://github.com/xenogew/svelte-play"
 			class="mx-2 text-gray-600 hover:text-gray-700 dark:hover:text-gray-300"

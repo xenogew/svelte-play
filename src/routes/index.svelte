@@ -132,6 +132,7 @@
 
 		<div class="flex justify-center mt-6">
 			<button
+				id="generate"
 				class="px-6 py-2 leading-5 w-full text-white text-lg font-medium transition-colors duration-200 ease-in-out transform bg-blue-700 hover:bg-blue-800 focus:bg-blue-800 shadow-md hover:shadow-lg rounded-md focus:outline-none"
 				>Generate</button
 			>
@@ -158,6 +159,7 @@
 				let:copy
 			>
 				<button
+					id="copy-it"
 					class="flex flex-row justify-center gap-x-1 px-6 py-2 shadow-md w-full text-white transition-colors duration-200 transform bg-gray-700 rounded-b-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 active:bg-gray-700 dark:active:bg-gray-500"
 					on:click|preventDefault={copy}
 					on:click|preventDefault={async () => {
