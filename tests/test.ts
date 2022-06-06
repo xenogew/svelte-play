@@ -15,5 +15,4 @@ test(`index is expected checkboxes labelled with <span> and other switches with 
 	expect(await page.textContent('label[for=lowers]')).toBe('Include Lowercases');
 	expect(await page.textContent('label[for=uppers]')).toBe('Include Uppercases');
 	expect(await page.textContent('label[for=similar]')).toBe('Exclude Similar');
-	expect(await page.textContent('label[for=ambiguous]')).toBe('Exclude Ambiguous');
 });
