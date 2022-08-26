@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   setup:
     docker:
-      - image: znck/pnpm:latest
+      - image: lsage/pnpm-circleci-node:latest
     steps:
       - checkout
       - restore_cache:
@@ -19,7 +19,7 @@ jobs:
 
   test-w-playwright:
     docker:
-      - image: znck/pnpm:latest
+      - image: lsage/pnpm-circleci-node:latest
     steps:
       - checkout
       - restore_cache:
@@ -33,7 +33,7 @@ jobs:
 
   build:
     docker:
-      - image: znck/pnpm:latest
+      - image: lsage/pnpm-circleci-node:latest
     steps:
       - checkout
       - restore_cache:
