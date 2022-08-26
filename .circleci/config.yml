@@ -1,62 +1,64 @@
 # This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
 version: 2.1
 
-executors:
-  ci-node:
-    docker:
-      - image: mcr.microsoft.com/playwright:v1.22.0-focal
-
 jobs:
-  cache-deps:
-    parameters:
-      key:
-        type: string
-    executor: ci-node
-    # machine:
-    # image: mcr.microsoft.com/playwright:v1.22.0-focal
-    # docker_layer_caching: true <- This Feature is available for paid plan
+  setup:
+    docker:
+      - image: znck/pnpm:latest
     steps:
       - checkout
       - restore_cache:
-          keys:
-            - << parameters.key >>
-      - run: npm install -g npm@latest
-      - run: npm install
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Install
+          command: pnpm install --frozen-lockfile
       - save_cache:
           paths:
             - 'node_modules'
-            - '~/project/node_modules'
-            - '/usr/local/lib/node_modules'
-          key: << parameters.key >>
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
 
   test-w-playwright:
-    executor: ci-node
+    docker:
+      - image: znck/pnpm:latest
     steps:
       - checkout
       - restore_cache:
-          keys:
-            - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
-      - run: npm install
-      - run: npm run test
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Install
+          command: pnpm install
+      - run:
+          name: Test
+          command: pnpm run test
 
   build:
-    working_directory: /app
     docker:
-      - image: docker:20-git
+      - image: znck/pnpm:latest
     steps:
       - checkout
-      - setup_remote_docker
-        # docker_layer_caching: false;
-      - run: ls -ls
+      - restore_cache:
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Build
+          command: |
+            pnpm run build
+            ls .vercel
+      - save_cache:
+          key: build-output-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - .vercel
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  test_w_playwright: # This is the name of the workflow, feel free to change it to better match your workflow.
+  version: 2
+  build_and_test: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - cache-deps:
-          key: npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
+      - setup
+      - build:
+          requires:
+            - setup
       - test-w-playwright:
           requires:
-            - 'cache-deps'
+            - setup

@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test';
-import exp from 'constants';
 
 test(`index is expected to render header section`, async ({ page }) => {
 	await page.goto('/');
@@ -29,7 +28,7 @@ test(`index is expected found labels & controllers`, async ({ page }) => {
 	// generate button
 	expect(await page.textContent('button#generate')).toBe('Generate');
 	// copy button
-	expect((await page.textContent('button#copy-it')).trim()).toBe('Copy it');
+	expect(await page.textContent('button#copy-it')).toContain('Copy it');
 
 	// generated label
 	expect(await page.textContent('label[for=generated]')).toBe('Generated');
