@@ -27,9 +27,9 @@ jobs:
       - run:
           name: Install PNPM and Run Test
           command: |
-            npm install -g pnpm
-            npx playwright install
+            npm install --location=global pnpm
             pnpm install
+            npx playwright install
             pnpm run test
 
   build:
