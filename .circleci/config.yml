@@ -19,11 +19,14 @@ jobs:
 
   test-w-playwright:
     docker:
-      - image: lsage/pnpm-circleci-node:latest
+      - image: mcr.microsoft.com/playwright:v1.23.2-jammy-amd64
     steps:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Install PNPM
+          command: curl -fsSL https://get.pnpm.io/install.sh | sh -
       - run:
           name: Install && Test
           command: pnpm install && pnpm run test || true
@@ -56,6 +59,6 @@ workflows:
       - build:
           requires:
             - setup
-      # - test-w-playwright:
-      #     requires:
-      #       - setup
+      - test-w-playwright:
+          requires:
+            - setup
