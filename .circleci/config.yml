@@ -34,6 +34,8 @@ jobs:
             echo "Node: $(node --version)"
             echo "NPM: $(npm --version)"
             echo "PNPM: $(pnpm --version)"
+            echo $PATH
+            echo "which node => $(which node)"
             pnpm install
             pnpm run test
 
