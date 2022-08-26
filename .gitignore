@@ -11,3 +11,4 @@ pnpm-debug.log
 /target
 /.vercel_build_output
 /.vercel
+/.pnpm-store
