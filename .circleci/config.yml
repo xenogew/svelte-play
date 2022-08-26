@@ -28,8 +28,9 @@ jobs:
           name: Install PNPM
           command: |
             curl -fsSL https://get.pnpm.io/install.sh | bash -
+            ls -lsa /root/.local/share/pnpm/
             source /root/.bashrc
-            pnpm --version
+            /root/.local/share/pnpm/pnpm --version
       - run:
           name: Install && Test
           command: pnpm install && pnpm run test
