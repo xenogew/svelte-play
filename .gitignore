@@ -10,3 +10,4 @@ pnpm-debug.log
 /.vscode
 /target
 /.vercel_build_output
+/.vercel
