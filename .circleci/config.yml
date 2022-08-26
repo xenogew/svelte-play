@@ -27,12 +27,13 @@ jobs:
       - run:
           name: Install PNPM and Run Test
           command: |
+            apt-get update && apt-get upgrade -y
             curl -fsSL https://get.pnpm.io/install.sh | bash -
-            echo $PATH
             export PNPM_HOME="/root/.local/share/pnpm"
             export PATH="$PNPM_HOME:$PATH"
-            echo $PATH
-            pnpm --version
+            echo "Node: $(node --version)"
+            echo "NPM: $(npm --version)"
+            echo "PNPM: $(pnpm --version)"
             pnpm install
             pnpm run test
 
