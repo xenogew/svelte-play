@@ -28,9 +28,7 @@ jobs:
           name: Install PNPM and Run Test
           command: |
             npm install -g pnpm
-            echo "Node: $(node --version)"
-            echo "NPM: $(npm --version)"
-            echo "PNPM: $(pnpm --version)"
+            npx playwright install
             pnpm install
             pnpm run test
 
