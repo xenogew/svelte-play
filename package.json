@@ -4,7 +4,6 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"build:config": "esbuild svelte.config.ts --outfile=svelte.config.js",
 		"package": "svelte-kit package",
 		"preview": "vite preview",
 		"test": "playwright test",
@@ -21,7 +20,6 @@
 		"@typescript-eslint/eslint-plugin": "^5.35.1",
 		"@typescript-eslint/parser": "^5.35.1",
 		"autoprefixer": "^10.4.8",
-		"esbuild": "^0.15.5",
 		"eslint": "^8.23.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
