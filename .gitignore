@@ -12,3 +12,4 @@ pnpm-debug.log
 /.vercel_build_output
 /.vercel
 /.pnpm-store
+svelte.config.js

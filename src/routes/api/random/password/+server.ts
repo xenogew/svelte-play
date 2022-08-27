@@ -1,6 +1,5 @@
 import type { RequestEvent } from '@sveltejs/kit';
 
-/** @type {import('@sveltejs/kit').RequestHandler} */
 export async function POST({ request }: RequestEvent) {
 	const req = await request.json();
 	const baseUrl: string = import.meta.env.VITE_RUST_API_URL;
