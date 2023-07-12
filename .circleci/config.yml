@@ -12,21 +12,20 @@ jobs:
       key:
         type: string
     executor: ci-node
-    # machine:
-    # image: mcr.microsoft.com/playwright:v1.22.0-focal
-    # docker_layer_caching: true <- This Feature is available for paid plan
     steps:
       - checkout
       - restore_cache:
           keys:
             - << parameters.key >>
       - run: npm install -g npm@latest
-      - run: npm install
+      - run: npm install -g pnpm
+      - run: pnpm install
       - save_cache:
           paths:
             - 'node_modules'
             - '~/project/node_modules'
             - '/usr/local/lib/node_modules'
+            - '~/.pnpm-store'
           key: << parameters.key >>
 
   test-w-playwright:
@@ -35,9 +34,12 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
-      - run: npm install
-      - run: npm run test
+            - npm-svelte-{{ arch }}-{{ checksum "pnpm-lock.yaml" }}
+      - run: npm install -g npm@latest
+      - run: npm install -g pnpm
+      - run: pnpm install
+      - run: pnpm dlx playwright install
+      - run: pnpm run test
 
   build:
     working_directory: /app
@@ -52,11 +54,11 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  test_w_playwright: # This is the name of the workflow, feel free to change it to better match your workflow.
+  go_to_vercel: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - cache-deps:
-          key: npm-svelte-{{ arch }}-{{ checksum "package-lock.json" }}
+          key: npm-svelte-{{ arch }}-{{ checksum "pnpm-lock.yaml" }}
       - test-w-playwright:
           requires:
             - 'cache-deps'

@@ -1,10 +1,10 @@
+import { json } from '@sveltejs/kit';
 import type { RequestEvent } from '@sveltejs/kit';
+import { RUST_API_URL } from "$env/static/private";
 
-/** @type {import('@sveltejs/kit').RequestHandler} */
-export async function post({ request }: RequestEvent) {
+export async function POST({ request }: RequestEvent) {
 	const req = await request.json();
-	const baseUrl: string = import.meta.env.VITE_RUST_API_URL;
-	const response: Response = await fetch(`${baseUrl}/api/v1/gen/password/random`, {
+	const response: Response = await fetch(`${RUST_API_URL}/api/v1/gen/password/random`, {
 		method: 'POST',
 		headers: {
 			'content-type': 'application/json',
@@ -15,10 +15,10 @@ export async function post({ request }: RequestEvent) {
 		body: JSON.stringify(req)
 	});
 	const jsonBody: GeneratePasswordResponse = (await response.json()) as GeneratePasswordResponse;
-	return {
+	return json(jsonBody,
+		{
 		headers: {
 			'Content-Type': 'application/json'
 		},
-		body: jsonBody
-	};
+	});
 }

@@ -77,7 +77,7 @@
 				<label
 					class="text-gray-700 dark:text-gray-200"
 					for={symbolToggle.id}
-					on:click|preventDefault>Include Symbols</label
+					>Include Symbols</label
 				>
 			</div>
 
@@ -89,7 +89,7 @@
 				<label
 					class="text-gray-700 dark:text-gray-200"
 					for={numberToggle.id}
-					on:click|preventDefault>Include Numbers</label
+					>Include Numbers</label
 				>
 			</div>
 
@@ -98,7 +98,7 @@
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<label class="text-gray-700 dark:text-gray-200" for={lowerToggle.id} on:click|preventDefault
+				<label class="text-gray-700 dark:text-gray-200" for={lowerToggle.id}
 					>Include Lowercases</label
 				>
 			</div>
@@ -108,7 +108,7 @@
 			</div>
 
 			<div class="text-left my-0 sm:my-auto sm:text-right cursor-default">
-				<label class="text-gray-700 dark:text-gray-200" for={upperToggle.id} on:click|preventDefault
+				<label class="text-gray-700 dark:text-gray-200" for={upperToggle.id}
 					>Include Uppercases</label
 				>
 			</div>
@@ -121,7 +121,7 @@
 				<label
 					class="text-gray-700 dark:text-gray-200"
 					for={similarToggle.id}
-					on:click|preventDefault>Exclude Similar</label
+					>Exclude Similar</label
 				>
 			</div>
 
