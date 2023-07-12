@@ -38,6 +38,7 @@ jobs:
       - run: npm install -g npm@latest
       - run: npm install -g pnpm
       - run: pnpm install
+      - run: pnpm dlx playwright install
       - run: pnpm run test
 
   build:
@@ -53,7 +54,7 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  test_w_playwright: # This is the name of the workflow, feel free to change it to better match your workflow.
+  go_to_vercel: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - cache-deps:
