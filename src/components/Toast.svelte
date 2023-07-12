@@ -7,9 +7,12 @@
 	<!-- Toast Notification Info -->
 	<div
 		on:click={async () => (toasting = !toasting)}
-		in:fly={{ x: 100 }}
-		out:fade
+		on:keypress={(event) => {if (event.key === 'Escape') toasting = !toasting}}
+		in:fly|global={{ x: 100 }}
+		out:fade|global
 		class="sm:absolute fixed top-4 right-4 z-50 transition flex items-center bg-blue-400 border-l-4 border-blue-700 p-4 shadow-md cursor-pointer"
+		role="button"
+		tabindex="0"
 	>
 		<!-- icons -->
 		<div class="text-blue-500 rounded-full bg-white mr-3">
