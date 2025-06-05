@@ -6,7 +6,7 @@ test(`index is expected title in <span> is 'Password Generator'`, async ({ page 
 });
 
 test(`index is expected checkboxes labelled with <span> and other switches with <label>`, async ({
-	page
+	page,
 }) => {
 	await page.goto('/');
 	expect(await page.textContent('span#pw-length')).toBe('Password Length');

@@ -1,13 +1,21 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-	export let text: string;
-	const dispatch = createEventDispatcher<{ copy: string; fail: never }>();
-	const copy = () => {
-		navigator.clipboard.writeText(text).then(
-			() => dispatch('copy', text),
-			(e) => dispatch('fail')
-		);
+	import type { Snippet } from 'svelte';
+	interface Props {
+		text: string;
+		children?: Snippet<[any]>;
+		copy: Function;
+		fail: Function;
+	}
+
+	let { text, children, copy, fail }: Props = $props();
+
+	copy = async () => {
+		try {
+			await navigator.clipboard.writeText(text);
+		} catch {
+			fail();
+		}
 	};
 </script>
 
-<slot {copy} />
+{@render children?.({ copy, fail })}

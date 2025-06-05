@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 import type { RequestEvent } from '@sveltejs/kit';
-import { RUST_API_URL } from "$env/static/private";
+import { RUST_API_URL } from '$env/static/private';
 
 export async function POST({ request }: RequestEvent) {
 	const req = await request.json();
@@ -10,15 +10,14 @@ export async function POST({ request }: RequestEvent) {
 			'content-type': 'application/json',
 			accept: '*/*',
 			'content-length': request.headers.get('content-length') as string,
-			'accept-encoding': 'gzip, deflate, br'
+			'accept-encoding': 'gzip, deflate, br',
 		},
-		body: JSON.stringify(req)
+		body: JSON.stringify(req),
 	});
 	const jsonBody: GeneratePasswordResponse = (await response.json()) as GeneratePasswordResponse;
-	return json(jsonBody,
-		{
+	return json(jsonBody, {
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
 		},
 	});
 }

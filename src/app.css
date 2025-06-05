@@ -1,11 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&family=Roboto&display=swap');
+@import 'tailwindcss';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* @custom-variant dark (&:where(.dark, .dark *)); */
 
-@layer base {
-	html {
-		font-family: Roboto;
-	}
+@theme {
+	--font-roboto: 'Noto Sans Thai Variable', 'Roboto', sans-serif;
+	--font-comic: 'Comic Neue', cursive;
 }
