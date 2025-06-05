@@ -210,7 +210,5 @@
 
 	<hr class="my-10 border-gray-200 dark:border-gray-700" />
 
-	<pre class="text-slate-100">Toasting: {$state.snapshot(toasting)}</pre>
-
 	<Footer />
 </section>
