@@ -1,21 +1,30 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
-	export let toasting: boolean;
+	import type { Snippet } from 'svelte';
+
+	interface Props {
+		toasting: boolean;
+		children?: Snippet;
+	}
+
+	let { toasting = $bindable(false), children }: Props = $props();
 </script>
 
 {#if toasting}
 	<!-- Toast Notification Info -->
 	<div
-		on:click={async () => (toasting = !toasting)}
-		on:keypress={(event) => {if (event.key === 'Escape') toasting = !toasting}}
+		onclick={async () => (toasting = !toasting)}
+		onkeypress={(event) => {
+			if (event.key === 'Escape') toasting = !toasting;
+		}}
 		in:fly|global={{ x: 100 }}
 		out:fade|global
-		class="sm:absolute fixed top-4 right-4 z-50 transition flex items-center bg-blue-400 border-l-4 border-blue-700 p-4 shadow-md cursor-pointer"
+		class="fixed top-4 right-4 z-50 flex cursor-pointer items-center border-l-4 border-blue-700 bg-blue-400 p-4 shadow-md transition sm:absolute"
 		role="button"
 		tabindex="0"
 	>
 		<!-- icons -->
-		<div class="text-blue-500 rounded-full bg-white mr-3">
+		<div class="mr-3 rounded-full bg-white text-blue-500">
 			<svg
 				width="1.8em"
 				height="1.8em"
@@ -31,6 +40,6 @@
 			</svg>
 		</div>
 		<!-- message -->
-		<div class="text-white max-w-xs"><slot /></div>
+		<div class="max-w-xs text-white">{@render children?.()}</div>
 	</div>
 {/if}

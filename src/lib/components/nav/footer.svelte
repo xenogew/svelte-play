@@ -1,29 +1,29 @@
 <script lang="ts">
-	import BuyMeCoffee from '../../components/special/BuyMeCoffee.svelte';
+	import BuyMeCoffee from '$lib/components/special/BuyMeCoffee.svelte';
 </script>
 
-<div class="w-full -mx-6">
+<div class="-mx-6 w-full">
 	<div class="px-6">
 		<div>
 			<h3
-				class="text-sm font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 sm:text-md"
+				class="sm:text-md text-sm font-bold text-gray-800 hover:text-gray-700 dark:text-white dark:hover:text-gray-300"
 			>
 				Credit
 			</h3>
 		</div>
 
 		<a
-			class="max-w-md mt-2 text-gray-500 text-xs sm:text-base dark:text-gray-400"
+			class="mt-2 max-w-md text-xs text-gray-500 sm:text-base dark:text-gray-400"
 			href="https://www.flaticon.com/free-icons/password"
 			title="password icons">Password icons created by Freepik - Flaticon</a
 		>
 	</div>
 </div>
 
-<div class="sm:flex sm:items-center sm:justify-between mt-6">
+<div class="mt-6 sm:flex sm:items-center sm:justify-between">
 	<p class="text-xs text-gray-600 dark:text-gray-300">© Copyright 2021. All Rights Reserved.</p>
 
-	<div class="flex mt-3 -mx-2 sm:mt-0 items-center">
+	<div class="-mx-2 mt-3 flex items-center sm:mt-0">
 		<a
 			href="https://github.com/xenogew/svelte-play"
 			class="mx-2 text-gray-600 hover:text-gray-700 dark:hover:text-gray-300"
@@ -31,7 +31,7 @@
 			target="_blank"
 		>
 			<svg
-				class="w-5 h-5 fill-current"
+				class="h-5 w-5 fill-current"
 				viewBox="0 0 24 24"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
